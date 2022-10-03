@@ -1,6 +1,7 @@
 const getOpeningHours = require('../src/getOpeningHours');
 
 describe('Testes da função getOpeningHours', () => {
+  const isOpen = 'The zoo is open';
   it('Testa se getOpeningHours é uma função', () => {
     expect(typeof getOpeningHours).toBe('function');
   });
@@ -16,7 +17,7 @@ describe('Testes da função getOpeningHours', () => {
     });
   });
   it('testa se o dia passado como parametro é Capitalizado e testado', () => {
-    expect(getOpeningHours('sUnday', '10:00-aM')).toBe('The zoo is open');
+    expect(getOpeningHours('sUnday', '10:00-aM')).toBe(isOpen);
   });
   it('testa se ao passar como segundo paramentro algo que nao seja as horas ou de 0 a 12 retorna um erro', () => {
     expect(() => getOpeningHours('Monday', 'nove:00-AM')).toThrow('The hour should represent a number');
@@ -33,13 +34,13 @@ describe('Testes da função getOpeningHours', () => {
     expect(() => getOpeningHours('Monday', '09:10-rr')).toThrow('The abbreviation must be \'AM\' or \'PM\'');
   });
   it('testa se esta aberto e funcionando o zoologico ou fechado', () => {
-    expect(getOpeningHours('sunday', '12:00-pm')).toBe('The zoo is open');
+    expect(getOpeningHours('sunday', '12:00-pm')).toBe(isOpen);
   });
   it('testa se segunda o zoologico abre', () => {
     expect(getOpeningHours('monday', '09:00-AM')).toBe('The zoo is closed');
   });
   it('testa o horario de terça', () => {
-    expect(getOpeningHours('tuesday', '09:00-AM')).toBe('The zoo is open');
+    expect(getOpeningHours('tuesday', '09:00-AM')).toBe(isOpen);
   });
   it('testa o horario de quarta', () => {
     expect(getOpeningHours('wednesday', '09:00-pm')).toBe('The zoo is closed');
