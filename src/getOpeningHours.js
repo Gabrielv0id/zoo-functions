@@ -56,6 +56,7 @@ const getOpeningHours = (day, dataHour) => {
   validateDay(adjustedDay);
   validateHour(dataHour);
   const { open, close } = hours[adjustedDay];
+  console.log(open, close);
   if (empty(close, open)) return 'The zoo is closed';
   const period = dataHour.split('-')[1].toUpperCase();
   const hour = Number(dataHour.split(':')[0]);
@@ -64,4 +65,5 @@ const getOpeningHours = (day, dataHour) => {
   return message;
 };
 
+console.log(getOpeningHours());
 module.exports = getOpeningHours;
